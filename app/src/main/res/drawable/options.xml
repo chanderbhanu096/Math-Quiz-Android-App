@@ -7,4 +7,8 @@
         android:color="@color/white" />
     <corners
         android:radius="12dp"/>
+<<<<<<< HEAD
 </shape>
+=======
+</shape>
+>>>>>>> origin/master
