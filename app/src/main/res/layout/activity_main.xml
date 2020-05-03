@@ -1,17 +1,189 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/parentLayout"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
     tools:context=".MainActivity"
-    android:orientation="vertical">
+    android:background="@color/colorPrimary"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
 
-    <TextView
-        android:layout_width="wrap_content"
+
+    <!-- Main Linear Layout -->
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/Quiz_name"
-        android:textSize="32sp"
-        gravity ce/>
+        android:orientation="vertical"
+        android:background="@color/colorPrimary">
+        <TextView
+            android:id="@+id/math_Quiz"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:text="@string/Quiz_name"
+            android:textAlignment="center"
+            android:layout_weight="20"
+            android:textColor="@color/white"
+            android:layout_margin="@dimen/mainheadingpaddong"
+            android:textSize="@dimen/mainText" />
 
-</LinearLayout>
+        <!-- result layout -->
+    <LinearLayout
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_margin="@dimen/subPadding"
+        android:gravity="center_vertical"
+        android:layout_marginTop="16dp"
+        android:background="@color/option"
+        android:padding="16dp"
+        android:visibility="gone">
+        <TextView
+            android:id="@+id/tvResult"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAlignment="center"
+            android:text="Good"
+            android:textSize="@dimen/mainText"
+            android:textColor="@color/white"
+            android:layout_marginTop="@dimen/mainpadding"
+            />
+
+    </LinearLayout>
+
+        <!-- Start of the Question Layout -->
+
+
+
+            <TextView
+                android:id="@+id/mathQuestion"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                android:text="Q.1 Solve the following math equation and select single Correct Answere : 4+5+10 ="
+                android:textColor="@color/white"
+                android:textAlignment="center"
+                android:textAppearance="@android:style/TextAppearance.Large"
+                android:layout_margin="@dimen/mainpadding"
+                />
+
+            <!-- Start of the Radio Button quiz -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/quiz"
+                android:padding="@dimen/subPadding"
+
+                android:orientation="vertical">
+                <RadioGroup
+                    android:id="@+id/rgOptions"
+                    android:layout_height="wrap_content"
+                    android:layout_width="match_parent"
+                    android:orientation="vertical">
+                    <RadioButton
+                        style="@style/checkbox"
+                        android:id="@+id/option1"
+                        android:text="4"
+                        />
+                    <RadioButton
+                        style="@style/checkbox"
+                        android:id="@+id/option2"
+                        android:text="10"
+                        />
+                    <RadioButton
+                        style="@style/checkbox"
+                        android:text="19"
+                        android:id="@+id/option3"
+
+                        />
+                    <RadioButton
+                        style="@style/checkbox"
+                        android:id="@+id/option4"
+                        android:text="15"
+                        />
+                </RadioGroup>
+
+
+            </LinearLayout>
+
+            <!-- Start of the checkbox Quiz -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="@dimen/subPadding"
+                android:id="@+id/checkBox"
+                android:visibility="gone"
+                >
+                <CheckBox
+                    style="@style/checkbox"
+                    android:id="@+id/cbOption1"
+                    android:text="Option 1"
+                    android:textColor="@color/white"
+                    />
+                <CheckBox
+                    style="@style/checkbox"
+                    android:id="@+id/cbOption2"
+                    android:text="Option 1"
+                    android:textColor="@color/white"
+                    />
+                <CheckBox
+                    style="@style/checkbox"
+                    android:id="@+id/cbOption3"
+                    android:text="Option 1"
+                    android:textColor="@color/white"
+                    />
+                <CheckBox
+                    style="@style/checkbox"
+                    android:id="@+id/cbOption4"
+                    android:text="Option 1"
+                    android:textColor="@color/white"
+                    />
+            </LinearLayout>
+
+            <!-- Start of the Free Text Quiz -->
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="@dimen/subPadding"
+                android:visibility="gone"
+                android:id="@+id/textBox">
+                <EditText
+                    android:id="@+id/etResponse"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/option"
+                    android:textColorHint="@color/white"
+                    android:textColor="@color/white"
+                    android:padding="@dimen/subPadding"
+                    android:hint="Enter Your Response"/>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/mainpadding"
+                android:orientation="horizontal">
+                <Button
+                    style="@style/buttons"
+                    android:id="@+id/btnPrevious"
+                    android:text="Prev"
+                    android:visibility="invisible"/>
+
+                <Button
+                    style="@style/buttons"
+                    android:id="@+id/btnSubmit"
+                    android:text="Submit"
+                    />
+                <Button
+                    android:id="@+id/btnNext"
+                    style="@style/buttons"
+                    android:text="next"
+                    />
+            </LinearLayout>
+
+        </LinearLayout>
+
+
+</ScrollView>
