@@ -33,6 +33,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
 
 
        Questions = (TextView)findViewById(R.id.mathQuestion);
@@ -41,9 +42,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
        option_3 = (RadioButton)findViewById(R.id.option3);
        option_4 = (RadioButton)findViewById(R.id.option4);
        submit = (Button)findViewById(R.id.btnSubmit);
-       Button next = (Button)findViewById(R.id.btnNext);
-       Button previous = (Button)findViewById(R.id.btnPrevious);
-       radioGroup = (RadioGroup)findViewById(R.id.rgOptions) ;
+       next = (Button)findViewById(R.id.btnNext);
+       previous = (Button)findViewById(R.id.btnPrevious);
+        radioGroup = (RadioGroup)findViewById(R.id.rgOptions) ;
         linearLayout =(LinearLayout)findViewById(R.id.checkBox);
         edittext_layout = (LinearLayout)findViewById(R.id.textBox);
         cbOption_1 = (CheckBox)findViewById(R.id.cbOption1);
@@ -51,6 +52,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         cbOption_3 = (CheckBox)findViewById(R.id.cbOption3);
         cbOption_4 = (CheckBox)findViewById(R.id.cbOption4);
         user_Input = (EditText)findViewById(R.id.etResponse);
+        math_quiz = (TextView)findViewById(R.id.math_Quiz);
 
 
 
@@ -89,16 +91,28 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                         submit.setVisibility(View.INVISIBLE);
                         scoreCount++;
                     }
+                    else {
+
+                    }
                 }
                 if(counter == 4){
-
                     response = user_Input.getText().toString().trim();
                     if (response.equals("4")){
                         edittext_layout.setVisibility(View.GONE);
                         previous.setVisibility(View.GONE);
                         submit.setVisibility(View.GONE);
-                        math_quiz.setText("You got " +scoreCount+"Out of 6");
+                        Questions.setVisibility(View.INVISIBLE);
+                        math_quiz.setText("You got "+scoreCount+" Out of 5");
+//                        math_quiz.setText("You got " +scoreCount+"Out of 6");
                         scoreCount++;
+                    }
+                    else{
+                        edittext_layout.setVisibility(View.GONE);
+                        previous.setVisibility(View.GONE);
+                        submit.setVisibility(View.GONE);
+                        math_quiz.setText("You got Out of 6");
+
+
                     }
                 }
 
