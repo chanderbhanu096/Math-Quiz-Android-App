@@ -11,6 +11,7 @@ import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
     int scoreCount = 0;
@@ -20,48 +21,41 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     TextView Questions;
     TextView math_quiz;
 
-    LinearLayout linearLayout,edittext_layout ;
+
+    LinearLayout linearLayout, edittext_layout;
     RadioGroup radioGroup;
-    CheckBox cbOption_1,cbOption_2,cbOption_3,cbOption_4;
-    RadioButton option_1,option_2,option_3,option_4;
+    CheckBox cbOption_1, cbOption_2, cbOption_3, cbOption_4;
+    RadioButton option_1, option_2, option_3, option_4;
     Button submit;
     Button next;
     Button previous;
-
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-
-       Questions = (TextView)findViewById(R.id.mathQuestion);
-       option_1 = (RadioButton)findViewById(R.id.option1);
-       option_2 = (RadioButton)findViewById(R.id.option2);
-       option_3 = (RadioButton)findViewById(R.id.option3);
-       option_4 = (RadioButton)findViewById(R.id.option4);
-       submit = (Button)findViewById(R.id.btnSubmit);
-       next = (Button)findViewById(R.id.btnNext);
-       previous = (Button)findViewById(R.id.btnPrevious);
-        radioGroup = (RadioGroup)findViewById(R.id.rgOptions) ;
-        linearLayout =(LinearLayout)findViewById(R.id.checkBox);
-        edittext_layout = (LinearLayout)findViewById(R.id.textBox);
-        cbOption_1 = (CheckBox)findViewById(R.id.cbOption1);
-        cbOption_2 = (CheckBox)findViewById(R.id.cbOption2);
-        cbOption_3 = (CheckBox)findViewById(R.id.cbOption3);
-        cbOption_4 = (CheckBox)findViewById(R.id.cbOption4);
-        user_Input = (EditText)findViewById(R.id.etResponse);
-        math_quiz = (TextView)findViewById(R.id.math_Quiz);
-
-
-
-
+        Questions = (TextView) findViewById(R.id.mathQuestion);
+        option_1 = (RadioButton) findViewById(R.id.option1);
+        option_2 = (RadioButton) findViewById(R.id.option2);
+        option_3 = (RadioButton) findViewById(R.id.option3);
+        option_4 = (RadioButton) findViewById(R.id.option4);
+        submit = (Button) findViewById(R.id.btnSubmit);
+        next = (Button) findViewById(R.id.btnNext);
+        previous = (Button) findViewById(R.id.btnPrevious);
+        radioGroup = (RadioGroup) findViewById(R.id.rgOptions);
+        linearLayout = (LinearLayout) findViewById(R.id.checkBox);
+        edittext_layout = (LinearLayout) findViewById(R.id.textBox);
+        cbOption_1 = (CheckBox) findViewById(R.id.cbOption1);
+        cbOption_2 = (CheckBox) findViewById(R.id.cbOption2);
+        cbOption_3 = (CheckBox) findViewById(R.id.cbOption3);
+        cbOption_4 = (CheckBox) findViewById(R.id.cbOption4);
+        user_Input = (EditText) findViewById(R.id.etResponse);
+        math_quiz = (TextView) findViewById(R.id.math_Quiz);
 
         submit.setOnClickListener(this);
         next.setOnClickListener(this);
         previous.setOnClickListener(this);
-
     }
 
     @Override
@@ -70,53 +64,81 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             case R.id.btnSubmit:
                 if (counter == 0) {
                     if (option_3.isChecked()) {
-                        submit.setVisibility(View.INVISIBLE);
-                        scoreCount++;
-                    }
-                }
-                if (counter == 1) {
-                    if (option_2.isChecked()) {
-                        submit.setVisibility(View.INVISIBLE);
-                        scoreCount++;
-                    }
-                }
-                if (counter == 2) {
-                    if (option_1.isChecked()) {
-                        submit.setVisibility(View.INVISIBLE);
-                        scoreCount++;
-                    }
-                }
-                if (counter == 3) {
-                    if (option_1.isChecked()||option_2.isChecked()) {
+                        Toast.makeText(this, "Right", Toast.LENGTH_SHORT).show();
                         submit.setVisibility(View.INVISIBLE);
                         scoreCount++;
                     }
                     else {
+                        Toast.makeText(this, "Wrong", Toast.LENGTH_SHORT).show();
+                        submit.setVisibility(View.INVISIBLE);
+                    }
 
+                }
+                if (counter == 1) {
+                    if (option_2.isChecked()) {
+                        Toast.makeText(this, "Right", Toast.LENGTH_SHORT).show();
+                        submit.setVisibility(View.INVISIBLE);
+                        scoreCount++;
+                    }
+                    else{
+                        Toast.makeText(this, "Wrong", Toast.LENGTH_SHORT).show();
+                        submit.setVisibility(View.INVISIBLE);
                     }
                 }
-                if(counter == 4){
+                if (counter == 2) {
+                    if (option_1.isChecked()) {
+                        Toast.makeText(this, "Right", Toast.LENGTH_SHORT).show();
+                        submit.setVisibility(View.INVISIBLE);
+                        scoreCount++;
+                    }
+                    else {
+                        Toast.makeText(this, "Wrong", Toast.LENGTH_SHORT).show();
+                        submit.setVisibility(View.INVISIBLE);
+                    }
+                }
+                if (counter == 3) {
+                    if (option_1.isChecked() || option_2.isChecked()) {
+                        Toast.makeText(this, "Right", Toast.LENGTH_SHORT).show();
+                        submit.setVisibility(View.INVISIBLE);
+                        scoreCount++;
+                    }
+                    if (option_1.isChecked() || option_2.isChecked()||option_4.isChecked()||option_3.isChecked()){
+                        Toast.makeText(this, "Wrong", Toast.LENGTH_SHORT).show();
+                        submit.setVisibility(View.INVISIBLE);
+                    }
+                    if (option_1.isChecked() || option_2.isChecked()||option_3.isChecked()){
+                        Toast.makeText(this, "Wrong", Toast.LENGTH_SHORT).show();
+                        submit.setVisibility(View.INVISIBLE);
+                    }
+                    if (option_1.isChecked() || option_2.isChecked()||option_4.isChecked()){
+                        Toast.makeText(this, "Wrong", Toast.LENGTH_SHORT).show();
+                        submit.setVisibility(View.INVISIBLE);
+                    }
+                    else {
+                        Toast.makeText(this, "Wrong", Toast.LENGTH_SHORT).show();
+                        submit.setVisibility(View.INVISIBLE);
+                    }
+                }
+                if (counter == 4) {
                     response = user_Input.getText().toString().trim();
-                    if (response.equals("4")){
+                    if (response.equals("4")) {
+                        Toast.makeText(this, "Right", Toast.LENGTH_SHORT).show();
                         edittext_layout.setVisibility(View.GONE);
                         previous.setVisibility(View.GONE);
                         submit.setVisibility(View.GONE);
                         Questions.setVisibility(View.INVISIBLE);
-                        math_quiz.setText("You got "+scoreCount+" Out of 5");
-//                        math_quiz.setText("You got " +scoreCount+"Out of 6");
                         scoreCount++;
-                    }
-                    else{
+                        Toast.makeText(this, "Your score: "+ scoreCount, Toast.LENGTH_SHORT).show();
+                        math_quiz.setText("You got " + scoreCount + " Out of 5");
+                    } else {
+                        Toast.makeText(this, "Wrong", Toast.LENGTH_SHORT).show();
                         edittext_layout.setVisibility(View.GONE);
                         previous.setVisibility(View.GONE);
                         submit.setVisibility(View.GONE);
-                        math_quiz.setText("You got Out of 6");
-
-
+                        Toast.makeText(this, "Your score: "+ scoreCount, Toast.LENGTH_SHORT).show();
+                        math_quiz.setText("You got " + scoreCount + " Out of 5");
                     }
-                }
-
-                else {
+                } else {
                     submit.setVisibility(View.INVISIBLE);
                 }
                 break;
@@ -139,7 +161,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     option_3.setText("1910");
                     option_4.setText("00");
                 }
-                if(counter == 3){
+                if (counter == 3) {
                     radioGroup.setVisibility(View.GONE);
                     linearLayout.setVisibility(View.VISIBLE);
                     Questions.setText("Q.4 Among the number listed in the below option which are less than 10");
@@ -149,7 +171,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     cbOption_4.setText("22");
 
                 }
-                if(counter == 4){
+                if (counter == 4) {
                     next.setVisibility(View.GONE);
                     linearLayout.setVisibility(View.GONE);
                     edittext_layout.setVisibility(View.VISIBLE);
